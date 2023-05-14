@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .menu {
+            margin-top: 20%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 80px;
+        }
+        .item {
+            position: relative;
+            text-decoration: none;
+       
+            width: 250px;
+            display: flex;
+            justify-content: center;
+        }
+        .text-decor {
+            display: inline-block;
+            line-height: 1;
+            text-transform: uppercase;
+            transition: 0.75s;
+            transition-delay: calc(0.075s) = var(--index);
+            margin: 0 2px;
+        }
+        
+        body {
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            background-color: aquamarine;
+        }
+     
+        * {
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+<form th:action="@{/authenticateUser}" method="post">
+    <div class="menu">
+        <h1>Login</h1>
+        <div th:if="${param.error}">
+            <div>Tai khoan hoac mat khau khong chinh xac. Xin vui long nhap lai</div>
+        </div>
+        <div th:if="${param.logout}">
+            <div>Ban da Logout tai khoan. Vui long dang nhap lai</div>
+        </div>
+        <div>
+            <label for="username">Username: </label>
+            <input type="text" id="username" name="username" required/>
+        </div>
+        <div>
+            <label for="password">Password: </label>
+            <input type="password" id="password" name="password" required/>
+        </div>
+        <div class="item">
+            <button class="text-decor" type="submit">Login</button>
+        </div>
+    </div>
+   
+</form>
+</body>
+</html>
